@@ -19,4 +19,4 @@ api.add_resource(AddListenPort, '/addlistenport')
 api = Api(camera_app)
 if __name__ == '__main__':
     #db.create_all()
-    camera_app.run(host='49.233.148.124',port='5000',debug=True)
+    camera_app.run(debug=True)
