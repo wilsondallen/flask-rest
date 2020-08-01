@@ -8,5 +8,5 @@ camera_app = Flask(__name__)
 
 camera_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'camera.sqlite')
 camera_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
+camera_app.config.update(RESTFUL_JSON=dict(ensure_ascii=False))
 db = SQLAlchemy(camera_app)
