@@ -4,7 +4,12 @@ from camera_api.model import *
 import json
 from camera_api import camera_app
 from flask import Response
+from flask_restful import marshal, fields
 
+json_data = {
+    'name': fields.String,
+    'url': fields.String
+}
 
 def abort_if_camera_doesnt_exist(name):
     camera_query = db.session.query(MonitorCamera).filter_by(name=name).first()
@@ -104,4 +109,5 @@ class AddListenPort(Resource):
 class PortList(Resource):
     def get(self):
         response = Response('首页', status=200, mimetype='text/html; charset=utf-8')
-        return {"student":None}
+        u = MonitorCamera(name='摄像头1', url='128.0.0.1')
+        return marshal(u, json_data, envelope='data')
