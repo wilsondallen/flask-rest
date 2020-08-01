@@ -3,7 +3,7 @@ from camera_api import db
 from camera_api.model import *
 import json
 from camera_api import camera_app
-
+from flask import Response
 
 
 def abort_if_camera_doesnt_exist(name):
@@ -100,4 +100,9 @@ class AddListenPort(Resource):
             return "regest successful", 200
         except Exception as e:
             return e, 400
+
+class PortList(Resource):
+    def get(self):
+        response = Response('首页', status=200, mimetype='text/html; charset=utf-8')
+        return response
 
