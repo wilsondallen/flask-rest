@@ -104,5 +104,4 @@ class AddListenPort(Resource):
 class PortList(Resource):
     def get(self):
         response = Response('首页', status=200, mimetype='text/html; charset=utf-8')
-        return response
-
+        return {"student":None}
