@@ -23,7 +23,7 @@ class Cameras(Resource):
         camera_json = {}
         camera_json['name'] = camera_query.name
         camera_json['url'] = camera_query.url
-        return camera_json, 200
+        return camera_json
 
     def delete(self, name):
         abort_if_camera_doesnt_exist(name)
