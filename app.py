@@ -29,7 +29,7 @@ class MyResponse(Response):
 camera_app.response_class = MyResponse
 api = Api(camera_app)
 #api = swagger.docs(Api(camera_app), apiVersion='1', api_spec_url="/api/v1/spec")
-api.add_resource(Cameras, '/cameras/<name>')
+api.add_resource(Cameras, '/cameras')
 api.add_resource(AddCamera, '/addcameras')
 api.add_resource(CameraList, '/cameralist')
 api.add_resource(AddListenPort, '/addlistenport')

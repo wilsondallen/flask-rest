@@ -17,7 +17,10 @@ parser = reqparse.RequestParser()
 parser.add_argument('name', type=str)
 #   show a single todo item and lets you delete them
 class Cameras(Resource):
-    def get(self, name):
+    def get(self):
+        args = parser1.parse_args()
+        print(args)
+        name = args['name']
         abort_if_camera_doesnt_exist(name)
         camera_query = db.session.query(MonitorCamera).filter_by(name=name).first()
         camera_json = {}
@@ -25,7 +28,10 @@ class Cameras(Resource):
         camera_json['url'] = camera_query.url
         return camera_json
 
-    def delete(self, name):
+    def delete(self):
+        args = parser1.parse_args()
+        print(args)
+        name = args['name']
         abort_if_camera_doesnt_exist(name)
         camera_query = db.session.query(MonitorCamera).filter_by(name=name).first()
         try:
