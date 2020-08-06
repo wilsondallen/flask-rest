@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" autoUpload="Always" serverName="wilson@106.13.66.41:22">
     <serverData>
       <paths name="bupt@10.108.101.110:22">
         <serverdata>
@@ -9,6 +9,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="wilson@106.13.66.41:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/wilson/flask-rest" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

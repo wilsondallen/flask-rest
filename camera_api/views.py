@@ -79,7 +79,7 @@ class CameraList(Resource):
         camera_query = MonitorCamera.query.all()
         print(camera_query)
         if camera_query is None:
-            return "当前摄像头为空", 200
+            return "当前还没有摄像头", 200
         else:
             for camera in camera_query:
                 camera_json = {}
@@ -108,6 +108,13 @@ class AddListenPort(Resource):
 
 class PortList(Resource):
     def get(self):
-        response = Response('首页', status=200, mimetype='text/html; charset=utf-8')
-        u = MonitorCamera(name='摄像头1', url='128.0.0.1')
-        return marshal(u, json_data, envelope='data')
+        port_list = []
+        port_db = db.session.query(ListenPort).all()
+        if port_db is None:
+            return "当前没有注册接口", 200
+        else:
+            for camera in port_db:
+                camera_json = {}
+                camera_json['url'] = camera.url
+                port_list.append(camera_json)
+            return port_list, 200

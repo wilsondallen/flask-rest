@@ -8,25 +8,6 @@ from flask_script import Shell,Manager
 
 import os
 
-class MyResponse(Response):
-    def __init__(self, response=None, **kwargs):
-        kwargs['headers'] = ''
-        headers = kwargs.get('headers')
-        # 跨域控制
-        origin = ('Access-Control-Allow-Origin', '*')
-        header = ('Access-Control-Allow-Headers', 'Content-Type')
-        methods = ('Access-Control-Allow-Methods', 'HEAD, OPTIONS, GET, POST, DELETE, PUT')
-        if headers:
-            headers.add(*origin)
-            headers.add(*header)
-            headers.add(*methods)
-        else:
-            headers = Headers([origin, header, methods])
-        kwargs['headers'] = headers
-        return super().__init__(response, **kwargs)
-
-
-camera_app.response_class = MyResponse
 api = Api(camera_app)
 #api = swagger.docs(Api(camera_app), apiVersion='1', api_spec_url="/api/v1/spec")
 api.add_resource(Cameras, '/cameras')
